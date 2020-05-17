@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.web.mapper.UserMapper" >
+
+	<cache eviction="LRU" flushInterval="60000" size="1024" readOnly="true" /> 
+<!-- 	<cache type="cn.mgr.cache.RedisLoggingCache"/> -->
+	
+	<resultMap type="cn.web.po.UserPO" id="userPO">
+		<result property="userId" column="id" />
+		<result property="userNo" column="user_no"/>
+		<result property="userName" column="user_name"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="officeTel" column="office_tel"/>
+	</resultMap>  
+	
+	<select id="findByID" resultMap="userPO" parameterType="cn.web.po.UserPO">
+		select * from user where id = #{userId}
+	</select>
+	
+	<select id="find" parameterType="cn.web.po.UserPO" resultMap="userPO">
+		select * from user 
+		<trim prefix="where" prefixOverrides="and |or">
+		  	<if test="userId!=null  and userId!=''">
+		  		id = #{userId}
+		  	</if>
+		  	<if test="userNo!=null  and userNo!=''">
+		  		and user_no = #{userNo}
+		  	</if>
+		  	<if test="userName!=null  and userName!=''">
+		  		and user_name = #{userName}
+		  	</if>
+       </trim>
+         order by id
+	</select>
+	
+	<select id="findCount" parameterType="cn.web.po.UserPO" resultType="java.lang.Integer">
+		select count(*) from user 
+		<trim prefix="where" prefixOverrides="and |or">
+		  	<if test="userId!=null  and userId!=''">
+		  		id = #{userId}
+		  	</if>
+		  	<if test="userNo!=null  and userNo!=''">
+		  		and user_no = #{userNo}
+		  	</if>
+		  	<if test="userName!=null  and userName!=''">
+		  		and user_name = #{userName}
+		  	</if>
+       </trim>
+	</select>
+	
+	
+	<insert id="add" parameterType="cn.web.po.UserPO">
+        insert into user (id,user_no,user_name,password,email,office_tel)
+        	values (#{userId},#{userNo},#{userName},#{password},#{email},#{officeTel})
+         <selectKey resultType="java.lang.Integer" keyProperty="userId">  
+           SELECT @@IDENTITY AS id  
+      	</selectKey>
+      	
+    </insert>
+    
+    <update id="update" parameterType="cn.web.po.UserPO">
+	    update user
+		    <set>
+		      <if test="userName != null">
+		        user_name = #{userName},
+		      </if>
+		      <if test="password != null">
+		        password = #{password},
+		      </if>
+		      <if test="email != null">
+		        email = #{email},
+		      </if>
+		      <if test="officeTel != null">
+		        office_tel = #{officeTel},
+		      </if>
+		    </set>
+	    where id = #{userId}
+    </update>
+    
+    <delete id="delete" parameterType="string" >
+    	delete from user where id = #{userId}
+    </delete>
+    
+    
+    <!--  
+    <resultMap type="com.abchina.dbwb.web.domain.UserDomain" id="userMap">
+    	<id property="userId" column="id"></id>
+    	<result property="userNo" column="user_no"></result>
+    	<result property="userName" column="user_name"></result>
+    	<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="officeTel" column="office_tel"/>
+    	<collection property="roleList" ofType="com.abchina.dbwb.web.domain.RoleDomain">
+    		<id property="roleId" column="roleid"></id>
+    		<result property="roleName" column="rolename"></result>
+    	</collection>
+    </resultMap>
+     
+    <select id="find" parameterType="int" resultMap="userMap">
+    	select a.*,c.roleid,c.rolename
+    	from user a left outer join userrole b on a.id=b.userid 
+    	left outer join role c on b.roleid=c.roleid
+    	where a.id=#{userId}
+    </select>
+   -->
+    <select id="findByUserName" parameterType="string" resultMap="userPO">
+    	select id,user_no,user_name
+    	 from user where user_no=#{userNo}
+    </select>
+    
+</mapper>

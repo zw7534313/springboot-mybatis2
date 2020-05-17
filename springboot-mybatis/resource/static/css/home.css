@@ -1,0 +1,64 @@
+.header{height:60px;border-top:4px solid #ce1811;background:url("../images/header-bg.png");}
+.header .menu-btn{width:141px;height:60px;background:url("../images/header-menu-btn.png") no-repeat;position:relative;}
+.header .logo1{width:141px;height:60px;background:url("../images/header-logo1.png") no-repeat;}
+.header .logo2{width:208px;height:60px;background:url("../images/header-logo2.png") no-repeat;}
+.header .menu-btn i{width:22px;height:18px;background:url("../images/menu-btn-icon.png") no-repeat;position:absolute;left:29px;top:12px;cursor: pointer;}
+
+.header .search{margin:10px 40px 0 0;position:relative;}
+.header .search-box{width:0;height:38px;background:#fff;border-radius: 5px;/*behavior: url(../css/ie-css3.htc);*/position:relative;overflow: hidden;}
+.header .search input{width:200px;height:36px;line-height: 36px;position:absolute;right:38px;}
+.header .search i{width:38px;height:38px;background:url("../images/search-icon.png") no-repeat center center;cursor: pointer;position:absolute;top:0;right:0;}
+.header .tips{width:22px;height:26px;background:url("../images/tips-icon.png") no-repeat;cursor:pointer;margin:17px 38px 0 0;position:relative;}
+.header span{padding:0 5px;background:#ce1811;border:2px solid #fff;color:#fff;position:absolute;left:12px;top:-8px;border-radius:11px;/*behavior: url(../css/ie-css3.htc);*/}
+.header .user{width:26px;height:26px;background:url("../images/user-icon.png") no-repeat;cursor:pointer;margin:17px 30px 0 0;}
+
+#west{width:80px;background:#fbf8f7;overflow-x:hidden; }
+.menu-list{width:80px;background:#201d1b;padding-top: 3px;min-height: 100%;}
+.menu-list li{width:80px;height:70px;overflow: hidden;cursor: pointer;}
+.menu-list li i{display: block;width:80px;height:35px;}
+.menu-list li p{width:80px;color:#988b8b;text-align: center;margin-top: 10px;}
+.menu-list li.active,.menu-list li:hover{background:url("../images/menu-active.png") no-repeat 0 5px;}
+.menu-list li.active p,.menu-list li:hover p{color:#fff;}
+.menu-list li i.menu-icon-home{background:url("../images/menu-icon-home.png") no-repeat center 16px;}
+.menu-list li i.menu-icon-zzgl{background:url("../images/menu-icon-zzgl.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-dygl{background:url("../images/menu-icon-dygl.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-dntj{background:url("../images/menu-icon-dntj.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-dyjy{background:url("../images/menu-icon-dyjy.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-djgz{background:url("../images/menu-icon-djgz.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-pypx{background:url("../images/menu-icon-pypx.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-tzgz{background:url("../images/menu-icon-tzgz.png") no-repeat center 16px;}
+.menu-list li i.menu-icon-xcsx{background:url("../images/menu-icon-xcsx.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-qywh{background:url("../images/menu-icon-qywh.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-jswm{background:url("../images/menu-icon-jswm.png") no-repeat center 18px;}
+.menu-list li i.menu-icon-tqgz{background:url("../images/menu-icon-tqgz.png") no-repeat center 15px;}
+.menu-list li i.menu-icon-zhgl{background:url("../images/menu-icon-zhgl.png") no-repeat center 10px;}
+.menu-list li.active i.menu-icon-home,.menu-list li:hover i.menu-icon-home{background:url("../images/menu-icon-home-hover.png") no-repeat center 16px;}
+.menu-list li.active i.menu-icon-zzgl,.menu-list li:hover i.menu-icon-zzgl{background:url("../images/menu-icon-zzgl-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-dygl,.menu-list li:hover i.menu-icon-dygl{background:url("../images/menu-icon-dygl-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-dntj,.menu-list li:hover i.menu-icon-dntj{background:url("../images/menu-icon-dntj-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-dyjy,.menu-list li:hover i.menu-icon-dyjy{background:url("../images/menu-icon-dyjy-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-djgz,.menu-list li:hover i.menu-icon-djgz{background:url("../images/menu-icon-djgz-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-pypx,.menu-list li:hover i.menu-icon-pypx{background:url("../images/menu-icon-pypx-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-tzgz,.menu-list li:hover i.menu-icon-tzgz{background:url("../images/menu-icon-tzgz-hover.png") no-repeat center 16px;}
+.menu-list li.active i.menu-icon-xcsx,.menu-list li:hover i.menu-icon-xcsx{background:url("../images/menu-icon-xcsx-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-qywh,.menu-list li:hover i.menu-icon-qywh{background:url("../images/menu-icon-qywh-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-jswm,.menu-list li:hover i.menu-icon-jswm{background:url("../images/menu-icon-jswm-hover.png") no-repeat center 18px;}
+.menu-list li.active i.menu-icon-tqgz,.menu-list li:hover i.menu-icon-tqgz{background:url("../images/menu-icon-tqgz-hover.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-zhgl,.menu-list li:hover i.menu-icon-zhgl{background:url("../images/menu-icon-zhgl-hover.png") no-repeat center 10px;}
+
+.menu-list li i.menu-icon-djxt09{background:url("../images/menu-icon-qywh.png") no-repeat center 15px;}
+.menu-list li.active i.menu-icon-djxt09,.menu-list li:hover i.menu-icon-djxt09{background:url("../images/menu-icon-qywh-hover.png") no-repeat center 15px;}
+
+
+.submenu{position:absolute;left:70px;display: none;background:#211e1c;opacity:0.95;padding:9px 0;border-left:2px solid #f7193e;border-radius: 3px;/*behavior: url(../css/ie-css3.htc);*/}
+
+.submenu .submenu-left-arrow{width:6px;height:15px;background:url("../images/submenu-left-arrow.png") no-repeat;position:absolute;left:-8px;top:13px;}
+.submenu .row{height:24px;color:#8b8b8b;}
+.submenu>.row:first-child{margin-bottom: 10px;}
+.submenu .row li{float: left;width:137px;line-height: 34px;cursor:pointer;}
+.submenu .row li:first-child i{width:0;}
+.submenu .row li i{float:left;width:1px;height:12px;background:#5c5c5c;margin:10px 14px 0 0;}
+.submenu .row li:hover{color:#fff;}
+
+#center-tabs .panel-body{overflow: hidden; url("../images/bottom-shadow-bg.png") repeat-x}
+

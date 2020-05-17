@@ -1,0 +1,42 @@
+  <html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div>
+        <div class="title-search fl" style="width:100%;">
+        	<span class="ft14" style="width: 60px;">用户编号</span>
+        	<input id="yhbh" class="ft12 search-box" type="text" placeholder=""/>
+        	<span class="ft14" style="width: 60px;margin-left: 20px;">用户名称</span>
+        	<input id="yhmc" class="ft12 search-box" type="text" placeholder="用户名称"/>
+        	<input type="button" id="userquery" class="btn-blue" value="查询" style="width: 80px;margin-left:20px;margin-bottom:5px;"/>
+        	
+        </div>
+<!--         <div class="project-table" > -->
+<!--             <div id="project-table" class="global-page-table"></div> -->
+<!--         </div> -->
+
+		<table>
+			<tr>
+				<td><input type="checkbox"/></td>
+				<td>用户编号</td>
+				<td>用户名称</td>
+				<td>邮箱</td>
+				<td>办公电话</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+			<tr th:each="u,uStat:${userList}">
+				<td><input name="userId" type="checkbox" th:value="${u.userId}"/></td>
+				<td th:text="${u.userNo}"></td>
+				<td th:text="${u.userName}"></td>
+				<td th:text="${u.email}"></td>
+				<td th:text="${u.officeTel}"></td>
+				<td th:text="${u.status}"></td>
+				<td>
+					<a href="#" th:id="${u.userId}" onclick="updateUserWin(this.id);">编辑</a>
+					<a href="#" th:id="${u.userId}" onclick="$.deleteUser(this.id);" style="margin-left:10px;">删除</a>
+				</td>
+			</tr>
+		</table>
+		</div>
+		
+</body>
+</html>

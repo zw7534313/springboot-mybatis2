@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.web.mapper.RedPacketMapper" >
+
+	<resultMap type="cn.web.po.RedPacketPO" id="redPacketMap">
+		<result property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="amount" column="amount"/>
+		<result property="sendDate" column="send_date"/>
+		<result property="total" column="total"/>
+		<result property="unitAmount" column="unit_amount"/>
+		<result property="stock" column="stock"/>
+		<result property="version" column="version"/>
+		<result property="status" column="status"/>
+	</resultMap>  
+	
+	<select id="getRedPacket" resultMap="redPacketMap" parameterType="int">
+		select * from red_packet where id = #{id}
+	</select>
+	
+	<insert id="insertRedPacketUser" useGeneratedKeys="true" keyProperty="id" parameterType="cn.web.po.RedPacketUserPO">
+        insert into red_packet_user (red_packet_id,user_id,amount) values (#{redPacketId},#{userId},#{amount})
+    </insert>
+    
+    <update id="updateRedPacketStock" parameterType="int">
+	    update red_packet set stock=stock-1 where id = #{id}
+    </update>
+    
+    <update id="updateRedPacketUserId" parameterType="cn.web.po.RedPacketUserPO">
+	    update red_packet_user set user_id=#{userId} where id = #{id}
+    </update>
+    
+    <select id="grabRedPacketProcedure" parameterMap="paramMap" resultType="map" statementType="CALLABLE">
+    	{call grabRedPacketProcedure(?,?,?)}
+    </select>
+    
+    <parameterMap type="java.util.Map" id="paramMap">
+    	<parameter property="v_red_packet_id" mode="IN" javaType="INTEGER" jdbcType="INTEGER"/>
+    	<parameter property="v_user_id" mode="IN" javaType="INTEGER" jdbcType="INTEGER"/>
+    	<parameter property="num" mode="OUT" javaType="INTEGER" jdbcType="INTEGER"/>
+    </parameterMap>
+    
+    <update id="updateRedPacketStatus" parameterType="cn.web.po.RedPacketPO">
+	    update red_packet set status=#{status} where id = #{id}
+    </update>
+    <select id="getRedPacketByStatus" resultMap="redPacketMap" >
+		select * from red_packet where status = '0'
+	</select>
+</mapper>

@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户管理</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/user.css"/>
+	<script src="../easyui/jquery.min.js"></script>
+	<script src="../easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+<!-- 	<script type="text/javascript" src="../js/echarts.min.js"></script> -->
+	<script src="../js/user.js"></script>
+	<script src="../js/common.js"></script>
+</head>
+<body class="body3">
+ <div id="userdiv" class="easyui-layout" fit="true">
+    <div class="userdiv-content" data-options="region:'center',border:false,split:false">
+        <div id="project" class="easyui-layout" fit="true">
+<!--             <div class="project-left" -->
+<!--                  data-options="region:'west',border:false,split:false,width:388,collapsedSize:1," href="left.html"> -->
+
+<!--             </div> -->
+            <div class="project-right" data-options="region:'center',border:false,split:false" 
+                 th:include="user/list :: html">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="win_add_user"></div>
+<div id="win_add_auth"></div>
+
+
+
+</body>
+</html>

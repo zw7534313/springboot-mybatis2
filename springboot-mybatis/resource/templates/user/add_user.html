@@ -1,0 +1,122 @@
+<div class="tan_normal tan_yjxxbj">
+	<div class="w_tan_normal ">
+		<div class="topbox ">
+			<div class="w-topbox" style="margin: 0 20px;text-align: center;">
+				<p class="fl">新建用户</p>
+				<div class="fr">
+					<i class="icon icon-close" onclick="hideAlert(this)"></i>
+				</div>
+			</div>
+		</div>
+		<div class="main_box " style="padding-top: 12px;">
+			<div class="w_main_box xjcqgh-w_main_box">
+				<form id="ff" method="post">
+			
+				<div class="ues-biaodan">
+					<div class="w-biaodan-name" >
+						<p class="biaodan-name">用户编号</p> <span>*</span>
+					</div>      
+					<input type="hidden" id="userId" name="userId"/>    
+        			<input id="userNo" name="userNo" type="text" value="" maxlength="50" class="text easyui-validatebox" data-options="required:true,validType: 'length[0,20]'">
+    			</div>
+    			<div class="ues-biaodan" style="margin-top:10px;">
+    				<div class="w-biaodan-name">
+						<p class="biaodan-name">用户名称</p> <span>*</span>  
+			        </div> 
+			        <input id="userName" name="userName" type="text" type="text" class="text easyui-validatebox" data-options="required:true,validType: 'length[0,20]'">
+    			</div>
+    			<div class="ues-biaodan" style="margin-top:10px;">
+					<div class="w-biaodan-name" >
+						<p class="biaodan-name">邮箱</p>  <span></span> 
+					</div>          
+        			<input id="email" name="email" type="text" value="" maxlength="50" class="text easyui-validatebox" data-options="validType: ['email',length[0,10]]">
+    			</div>
+    			<div class="ues-biaodan" style="margin-top:10px;">
+					<div class="w-biaodan-name" >
+						<p class="biaodan-name">办公电话</p>  <span></span> 
+					</div>          
+        			<input id="phone" name="phone" type="text" value="" maxlength="50" class="text easyui-validatebox" data-options="validType: 'length[0,20]'">
+    			</div>
+    			<div style="margin-top:10px;">
+					<div class="w-biaodan-name fl" >
+						<p class="biaodan-name">创建时间</p><span>*</span>
+					</div>
+					<div class="alert-row fl" style="margin-left:5px;">
+                         <div class="global-combox global-combox-date">
+		    				<input id="creDate" name="creDate" value="2017-01-01">
+		    			</div>
+					</div>  
+				</div>   
+				</form>         
+			</div>
+		</div>
+		<div class="btn-box btn_box_bcqx " style="padding: 5px 20px;margin-top:10px;">
+				 <input type="submit" name="" value="保存" class="btn_normal btn_save" onclick="submit2();">
+				 <input type="button" name="" value="取消" class="btn_normal btn_cancel" onclick="hideAlert(this)">
+	    </div>
+	</div>
+</div>
+<script>
+//时间控件
+$('#creDate').datebox({
+	panelHeight:'auto',
+    height:"30px",
+    required:true
+});
+
+$(function(){
+	//$('#ff').form('load',{'userId':'100','userNo':'zhangsan','userName':'张三'});
+	if(selectId){
+		$('#ff').form('load', "/spring4mybatis3/rest/user/" + selectId);
+	}
+});
+
+function submit2(){
+	// 调用表单插件的'submit'方法来提交表单
+	$('#ff').form('submit', 
+			{
+				url:"/spring4mybatis3/rest/user/save",
+				onSubmit: function(){
+					// 做一些检查
+					// 返回false可以阻止提交操作；
+					var isValid = $(this).form('validate');
+					if (!isValid){
+						return false;
+					}
+					return isValid;
+				},
+				success:function(data){
+					hideAlert(this);
+					//使用新的标题和内容更新被选中的选项卡
+					$('#project-table').datagrid('reload');
+				}
+	});	
+}
+
+function submit(){
+	var userNo = $("#userNo").val();
+	var userName = $("#userName").val();
+	var email = $("#email").val();
+	var phone = $("#phone").val();
+	var userId = $("#userId").val();
+	
+	//保存或修改
+	$.ajax({
+        type: 'POST', //post不能加contentType
+        url: "/spring4mybatis3/rest/user/save",
+        data: {'userId': userId,'userNo': userNo, 'userName': userName, 'email': email, 'phone': phone},
+        //data: JSON.stringify({'userNo': userNo, 'userName': userName, 'email': email, 'phone': phone}),
+        dataType: 'json',
+        //contentType: 'application/json; charset=UTF-8',
+        success: function(data,statusText, xhr){
+        	//alert(xhr.status); 状态码
+        	if(data.successful){
+                
+        	}
+        },
+        error: function (xhr, statusText) {
+            //alert(xhr.status);
+        }
+     });
+}
+</script>

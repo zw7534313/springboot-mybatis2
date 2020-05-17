@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+****${user}
+
+<!--  <span th:each="ck:${httpServletRequest.getCookies()}" th:if="${ck.getName().equals('token')}" th:text="${ck.getValue()}"></span>
+-->
+<p th:text="${user}"/>
+<span th:text="${httpSession}+'-'"> </span>
+
+d
+<span th:text="${map}"></span>
+</body>
+</html>

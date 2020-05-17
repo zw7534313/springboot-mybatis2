@@ -1,0 +1,36 @@
+
+1.下载maven
+https://mirror.bit.edu.cn/apache/maven/maven-3/3.5.4/binaries/
+
+Maven->Installations
+Maven->User Setting
+
+2.配置setting.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <!-- 你自己的仓库地址 -->
+  <localRepository>D:\repository</localRepository>
+ 
+  <mirrors>
+    <!--
+    <mirror>
+      <id>mirrorId</id>
+      <mirrorOf>repositoryId</mirrorOf>
+      <name>Human Readable Name for this Mirror.</name>
+      <url>http://my.repository.com/repo/path</url>
+    </mirror>
+    -->
+    <mirror>
+        <id>aliyun</id>
+        <name>aliyun Maven</name>
+        <mirrorOf>*</mirrorOf>
+        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+  </profiles>
+</settings>
+
+3.
